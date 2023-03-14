@@ -103,7 +103,33 @@
 {
     "Action": "Booking Create",
     "ProviderUID": "<string>",
-    ...
+    "BucketUID": "<string>",
+    "ScheduledDay": "<YYYY-MM-DD>",
+    "DepartureUID": "<string?>",
+    "PaymentMethod": "Credit",
+    "IssueType": "B2B",
+    "Name": "<string?>",
+    "FirstName": "<string>",
+    "LastName": "<string>",
+    "Gender": "<string>",
+    "Email": "<string?>",
+    "Phone": "<string>",
+    "Nationality": "",
+    "Passengers": [
+        {
+            "Age": "Adult",
+            "Type": "Guide",
+            "Cost": 28
+        },
+        {
+            "Age": "Child",
+            "Cost": 14
+        },
+        {
+            "Age": "Infant",
+            "Cost": 0
+        }
+    ]
 }
 ```
 
@@ -111,7 +137,10 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : {
+        "BookingUID": "<string>",
+        "Passengers": (Passenger & { UID: string })[]
+    }
 }
 ```
 
@@ -122,8 +151,8 @@
 ```json
 {
     "Action": "Booking Read",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>"
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
 }
 ```
 
@@ -131,7 +160,10 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : {
+        "Booking": {},
+        "Passengers": []
+    }
 }
 ```
 
@@ -142,9 +174,18 @@
 ```json
 {
     "Action": "Booking Update",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>",
-    ...
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>",
+    "Booking": {
+        "Name": "",
+        "FirstName": "",
+        "LastName": "",
+        "Gender": "",
+        "Email": "",
+        "Phone": "",
+        "Nationality": "",
+        "Comments": ""
+    }
 }
 ```
 
@@ -152,7 +193,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<timestamp>"
 }
 ```
 
@@ -163,8 +204,8 @@
 ```json
 {
     "Action": "Booking Disable",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>"
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
 }
 ```
 
@@ -172,7 +213,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<timestamp>"
 }
 ```
 
@@ -183,8 +224,8 @@
 ```json
 {
     "Action": "Booking Enable",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>"
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
 }
 ```
 
@@ -192,7 +233,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<timestamp>"
 }
 ```
 
@@ -203,8 +244,8 @@
 ```json
 {
     "Action": "Booking Boardings",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>"
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
 }
 ```
 
@@ -212,7 +253,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<Base64_PDF>"
 }
 ```
 
@@ -223,8 +264,8 @@
 ```json
 {
     "Action": "Booking Receipt",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>"
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
 }
 ```
 
@@ -232,7 +273,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<Base64_PDF>"
 }
 ```
 
@@ -243,8 +284,8 @@
 ```json
 {
     "Action": "Booking Resend",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>"
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
 }
 ```
 
@@ -252,7 +293,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<info>"
 }
 ```
 
@@ -263,8 +304,8 @@
 ```json
 {
     "Action": "Query Passengers",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUIDs": <string[]>
+    "ProviderUID": "<string>",
+    "BookingUIDs": ["<string1>","<string2>",...]
 }
 ```
 
@@ -282,10 +323,14 @@
 
 ```json
 {
-    "Action": "<Action Name>",
-    "ProviderUID": "<ProviderUID>",
-    "BookingUID": "<BookingUID>",
-    ...
+    "Action": "Passenger Create",
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>",
+    "Passengers": [
+        {
+            "Age": "Adult"
+        }
+    ]
 }
 ```
 
@@ -293,7 +338,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : <Passenger[]>
 }
 ```
 
@@ -303,9 +348,9 @@
 
 ```json
 {
-    "Action": "<Action Name>",
-    "ProviderUID": "<ProviderUID>",
-    "PassengerUID": "<PassengerUID>"
+    "Action": "Passenger Read",
+    "ProviderUID": "<string>",
+    "PassengerUID": "<string>"
 }
 ```
 
@@ -313,7 +358,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : <Passenger>
 }
 ```
 
@@ -323,9 +368,9 @@
 
 ```json
 {
-    "Action": "<Action Name>",
-    "ProviderUID": "<ProviderUID>",
-    "PassengerUID": "<PassengerUID>"
+    "Action": "Passenger Update",
+    "ProviderUID": "<string>",
+    "PassengerUID": "<string>"
     ...
 }
 ```
@@ -334,7 +379,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<timestamp>"
 }
 ```
 
@@ -344,9 +389,9 @@
 
 ```json
 {
-    "Action": "<Action Name>",
-    "ProviderUID": "<ProviderUID>",
-    "PassengerUID": "<PassengerUID>"
+    "Action": "Passenger Disable",
+    "ProviderUID": "<string>",
+    "PassengerUID": "<string>"
 }
 ```
 
@@ -354,7 +399,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : <boolean>
 }
 ```
 
@@ -364,9 +409,9 @@
 
 ```json
 {
-    "Action": "<Action Name>",
-    "ProviderUID": "<ProviderUID>",
-    "PassengerUID": "<PassengerUID>"
+    "Action": "Passenger Enable",
+    "ProviderUID": "<string>",
+    "PassengerUID": "<string>"
 }
 ```
 
@@ -374,7 +419,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : <boolean>
 }
 ```
 
@@ -384,9 +429,9 @@
 
 ```json
 {
-    "Action": "<Action Name>",
-    "ProviderUID": "<ProviderUID>",
-    "PassengerUID": "<PassengerUID>"
+    "Action": "Passenger Boarding",
+    "ProviderUID": "<string>",
+    "PassengerUID": "<string>"
 }
 ```
 
@@ -394,7 +439,7 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<Base64_PDF>"
 }
 ```
 
@@ -405,8 +450,8 @@
 ```json
 {
     "Action": "Passenger Resend",
-    "ProviderUID": "<ProviderUID>",
-    "PassengerUID": "<PassengerUID>"
+    "ProviderUID": "<string>",
+    "PassengerUID": "<string>"
 }
 ```
 
@@ -414,6 +459,6 @@
 
 ```json
 {
-    "Data" : <Object>
+    "Data" : "<info>"
 }
 ```
