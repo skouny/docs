@@ -377,8 +377,9 @@
 ```json
 {
     "Data" : {
-        "Boardings": <SentMessageInfo>,
-        "Receipt": <SentMessageInfo>
+        "Reservation": <SentMessageInfo | undefined>,
+        "Boardings": <SentMessageInfo | undefined>,
+        "Receipt": <SentMessageInfo | undefined>
     }
 }
 ```
