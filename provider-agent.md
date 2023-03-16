@@ -36,7 +36,7 @@
 {
     "Action": "Query Availabilities",
     "ProviderUID": "<string>",
-    "Day": "<string>" // Format: "YYYY-MM-DD"
+    "Day": "<YYYY-MM-DD>"
 }
 ```
 
@@ -60,15 +60,78 @@
                 "Price": <number>,
             }[],
             "Remaining": <number>,
-            "Departure": {
+            "Departures": {
                 "UID": "<string>",
                 "Day": "<string>",
                 "Time": "<string>",
                 "Ship": "<string>",
                 "Remaining": <number>,
-            }
+            }[]
         }[]
     }
+}
+```
+
+## Action: "Reservation Create"
+
+- Request:
+
+```json
+{
+    "Action": "Reservation Create",
+    "ProviderUID": "<string>",
+    "BucketUID": "<string",
+    "ScheduledDay": "<YYYY-MM-DD>",
+    "Places": 1,
+    "ExpirationTime": 10
+}
+```
+
+- Response:
+
+```json
+{
+    "Data" : <Reservation>
+}
+```
+
+## Action: "Reservation Read"
+
+- Request:
+
+```json
+{
+    "Action": "Reservation Read",
+    "ProviderUID": "<string>",
+    "ReservationUID": "<string>"
+}
+```
+
+- Response:
+
+```json
+{
+    "Data" : <WriteResult>
+}
+```
+
+## Action: "Reservation Delete"
+
+- Request:
+
+```json
+{
+    "Action": "Reservation Delete",
+    "ProviderUID": "<string>",
+    "ReservationUID": "<string>"
+}
+```
+
+- Response:
+
+```json
+{
+    "Data" : <boolean>
 }
 ```
 
@@ -274,6 +337,26 @@
 ```json
 {
     "Data" : "<Base64_PDF>"
+}
+```
+
+## Action: "Booking Printed"
+
+- Request:
+
+```json
+{
+    "Action": "Booking Printed",
+    "ProviderUID": "<string>",
+    "BookingUID": "<string>"
+}
+```
+
+- Response:
+
+```json
+{
+    "Data" : <WriteResult>
 }
 ```
 
