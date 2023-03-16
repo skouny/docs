@@ -154,7 +154,7 @@
 
 ```json
 {
-    "Data" : { [UID: string]: Booking }
+    "Data" : <{ [UID: string]: Booking }>
 }
 ```
 
@@ -202,7 +202,7 @@
 {
     "Data" : {
         "BookingUID": "<string>",
-        "Passengers": (Passenger & { UID: string })[]
+        "Passengers": <(Passenger & { UID: string })[]>
     }
 }
 ```
@@ -376,7 +376,10 @@
 
 ```json
 {
-    "Data" : "<info>"
+    "Data" : {
+        "Boardings": <SentMessageInfo>,
+        "Receipt": <SentMessageInfo>
+    }
 }
 ```
 
@@ -542,6 +545,6 @@
 
 ```json
 {
-    "Data" : "<info>"
+    "Data" : <SentMessageInfo>
 }
 ```
