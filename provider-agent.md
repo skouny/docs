@@ -256,7 +256,7 @@
 
 ```json
 {
-    "Data" : "<timestamp>"
+    "Data" : <WriteResult>
 }
 ```
 
@@ -276,7 +276,7 @@
 
 ```json
 {
-    "Data" : "<timestamp>"
+    "Data" : <number>
 }
 ```
 
@@ -296,7 +296,7 @@
 
 ```json
 {
-    "Data" : "<timestamp>"
+    "Data" : <number>
 }
 ```
 
@@ -462,7 +462,7 @@
 
 ```json
 {
-    "Data" : "<timestamp>"
+    "Data" : <WriteResult>
 }
 ```
 
